@@ -55,11 +55,11 @@ def autoNorm(dataSet):
 	minVals = dataSet.min(0)
 	maxVals = dataSet.max(0)  # canshu0 shide hanshu lie not hang 
 	ranges = maxVals -minVals
-	normdataSet = zeros(shape(dataSet))
+	normDataSet = zeros(shape(dataSet))
 	m = dataSet.shape[0]
 	normDataSet = dataSet - tile(minVals,(m,1))
-	normDataSet = normdataSet/tile(ranges,(m,1))  #in numpy, '/' doesn't mean matrix division, in order to do matrix division, use the 'linalg.solve(matA,matB)'
-	return normdataSet,ranges,minVals
+	normDataSet = normDataSet/tile(ranges,(m,1))  #in numpy, '/' doesn't mean matrix division, in order to do matrix division, use the 'linalg.solve(matA,matB)'
+	return normDataSet,ranges,minVals
 	
 
 def datingClassTest():
@@ -70,10 +70,8 @@ def datingClassTest():
 	numTestVecs = int(m*hoRatio)
 	errorCount = 0.0
 	for i in range(numTestVecs):
-		classifierResult = classify0(normMat[i,:],normMat[numTestVecs:m,:],\
-			datingLabels[numTestVecs:m],3)       # two-dimensional array slices
-		print 'the classifier came back with: %d, the real answer is: %d'\
-			% (classifierResult,datingLabels[i])
+		classifierResult = classify0(normMat[i,:],normMat[numTestVecs:m,:],datingLabels[numTestVecs:m],3)       # two-dimensional array slices
+		print 'the classifier came back with: %d, the real answer is: %d' % (classifierResult,datingLabels[i])
 		if (classifierResult != datingLabels[i]): errorCount += 1.0
 	print 'the total error rate is: %f' % (errorCount/float(numTestVecs))
-
+	print errorCount
