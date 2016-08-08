@@ -15,11 +15,26 @@ from sklearn import neighbors, datasets
 
 n_neighbors = 15
 
+classLabelVector = np.loadtxt('reduce_train_label.csv',delimiter = ',', skiprows = 0)
+print classLabelVector
+arr = []
+length = classLabelVector.shape[0]
+for i in range(length):
+    tmp = classLabelVector[i]
+    if tmp[0] == 1:
+        arr.append(1)
+    elif tmp[1] == 1:
+        arr.append(2)
+    else:
+        arr.append(3)
+classLabelVector= np.array(arr)
+returnMat = np.loadtxt('reduce_train_data.csv',delimiter = ',', skiprows = 0)
+print returnMat
 # import some data to play with
-iris = datasets.load_iris()
-X = iris.data[:, :2]  # we only take the first two features. We could
+#iris = datasets.load_iris()
+X = returnMat  # we only take the first two features. We could
                       # avoid this ugly slicing by using a two-dim dataset
-y = iris.target
+y = classLabelVector
 
 h = .02  # step size in the mesh
 
