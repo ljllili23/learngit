@@ -44,7 +44,7 @@ def file2matrix(filename):
 	index = 0
 	for line in fr.readlines():
 		line = line.strip()
-		listFromLine = line.split('\t')
+		listFromLine = line.split('   ')
 		returnMat[index,:] = listFromLine[0:3]
 		classLabelVector.append(int(listFromLine[-1]))
 		index += 1
