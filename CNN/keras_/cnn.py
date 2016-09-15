@@ -28,7 +28,10 @@ import cPickle as pickle
 np.random.seed(1024)  # for reproducibility
 
 
-f = open('mnist.pkl')
+f = open('0.pkl')
+arr = pickle.load(f)
+data = arr[0]
+label = arr[1]
 
 #加载数据
 #data, label = load_data()
@@ -40,7 +43,7 @@ label = label[index]
 print(data.shape[0], ' samples')
 
 #label为0~9共10个类别，keras要求格式为binary class matrices,转化一下，直接调用keras提供的这个函数
-label = np_utils.to_categorical(label, 676)
+label = np_utils.to_categorical(label, 1000)
 
 ###############
 #开始建立CNN模型
@@ -72,13 +75,13 @@ model.add(Activation('tanh'))
 model.add(MaxPooling2D(pool_size=(2, 2)))
 
 
-model.add(Convolution2D(32,3,3),border_mode='valid')
+model.add(Convolution2D(32,3,3))
 model.add(Activation('tanh'))
-model.add(MacPooling2D(pool_size=(2,2)))
+model.add(MaxPooling2D(pool_size=(2,2)))
 
-model.add(Convolution2D(64,3,3),border_mode='valid')
+model.add(Convolution2D(64,3,3))
 model.add(Activation('tanh'))
-model.add(MacPooling2D(pool_size=(2,2)))
+model.add(MaxPooling2D(pool_size=(2,2)))
 
 
 
@@ -92,7 +95,7 @@ model.add(Activation('tanh'))
 
 
 #Softmax分类，输出是10类别
-model.add(Dense(676, init='normal'))
+model.add(Dense(1000, init='normal'))
 model.add(Activation('softmax'))
 
 
