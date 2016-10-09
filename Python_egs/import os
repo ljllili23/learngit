@@ -1,0 +1,2 @@
+import os
+print('Process (%s) start...' %s.getpid())
