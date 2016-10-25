@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+	<title>Shin</title>
+</head>
+<body>
+<p>
+	if time is early than 20:00, you will get a reply "Good day".
+</p>
+<button onclick='myFunction()'>click here</button>
+<p id='demo'></p>
+<script type="text/javascript">
+	function myFunction()
+	{
+		var x = "";
+		var time=new Date().getHours();
+		if (time<20)
+		{
+			x = "Good day";
+		}
+	document.getElementById('demo').innerHTML=x;
+	}
+</script>
+
+</body>
+</html>
