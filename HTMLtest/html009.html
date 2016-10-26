@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+	<title>test009 about throw error</title>
+	<script >
+		function myFunction()
+		{
+			try
+			{
+				var x = document.getElementById('demo').value;
+				if(x='')	throw 'empty';
+				if(isNaN(x))	throw 'Not a num';
+				if(x>10)	throw 'too large';
+				if(x<5)		throw 'too small';
+
+
+			}
+			catch(err)
+			{
+				var y=document.getElementById('mess');
+				y.innerHTML='error:' + err +'.';
+			}
+		}
+	</script>
+</head>
+<body>
+<h1>My first JavaScript program.</h1>
+<p>Please input a number between 5 and 10.</p>
+<input id="demo" type='text'>
+<button type='button' onclick='myFunction()'>test</button>
+<p id="mess"></p>
+</body>
+</html>
