@@ -6,7 +6,9 @@ int main()
 	{
 		a[i]=0;
 	}
+	printf("Please input the amount of the numbers to be sorted:");
 	scanf("%d",&n); //input the amount of the numbers
+	printf("writer down the sequence:");
 	for(i=1;i<=n;i++)
 	{
 		scanf("%d",&t);
